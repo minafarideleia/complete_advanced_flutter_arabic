@@ -1,9 +1,8 @@
-import 'dart:html';
-
 import 'package:advanced_flutter_arabic/presentation/forgot_password/forgot_password_view.dart';
 import 'package:advanced_flutter_arabic/presentation/login/login_view.dart';
 import 'package:advanced_flutter_arabic/presentation/main/main_view.dart';
 import 'package:advanced_flutter_arabic/presentation/register/register_view.dart';
+import 'package:advanced_flutter_arabic/presentation/resources/strings_manager.dart';
 import 'package:advanced_flutter_arabic/presentation/splash/splash_view.dart';
 import 'package:advanced_flutter_arabic/presentation/store_details/store_details_view.dart';
 import 'package:flutter/material.dart';
@@ -41,12 +40,9 @@ class RouteGenerator {
     return MaterialPageRoute(
         builder: (_) => Scaffold(
               appBar: AppBar(
-                title: const Text(
-                    "No Route Found"), // todo move this string to strings manager
+                title: const Text(AppStrings.noRouteFound),
               ),
-              body: const Center(
-                  child: Text(
-                      "No Route Found")), // todo move this string to strings manager
+              body: const Center(child: Text(AppStrings.noRouteFound)),
             ));
   }
 }
