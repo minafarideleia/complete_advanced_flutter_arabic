@@ -28,18 +28,27 @@ class OnBoardingViewModel extends BaseViewModel
   }
 
   @override
-  void goNext() {
-    // TODO: implement goNext
+  int goNext() {
+    int nextIndex = ++_currentIndex;
+    if (nextIndex == _list.length) {
+      nextIndex = 0;
+    }
+    return nextIndex;
   }
 
   @override
-  void goPrevious() {
-    // TODO: implement goPrevious
+  int goPrevious() {
+    int previousIndex = --_currentIndex;
+    if (previousIndex == -1) {
+      previousIndex = _list.length - 1;
+    }
+    return previousIndex;
   }
 
   @override
   void onPageChanged(int index) {
-    // TODO: implement onPageChanged
+    _currentIndex = index;
+    _postDataToView();
   }
 
   @override
@@ -51,8 +60,9 @@ class OnBoardingViewModel extends BaseViewModel
       _streamController.stream.map((sliderViewObject) => sliderViewObject);
 
   // onboarding private functions
-  void _postDataToView(){
-    inputSliderViewObject.add(SliderViewObject(_list[_currentIndex],_list.length,_currentIndex));
+  void _postDataToView() {
+    inputSliderViewObject.add(
+        SliderViewObject(_list[_currentIndex], _list.length, _currentIndex));
   }
 
   List<SliderObject> _getSliderData() => [
@@ -69,8 +79,8 @@ class OnBoardingViewModel extends BaseViewModel
 
 // inputs mean that "Orders" that our view model will receive from view
 abstract class OnBoardingViewModelInputs {
-  void goNext(); // when user clicks on right arrow or swipe left
-  void goPrevious(); // when user clicks on left arrow or swipe right
+  int goNext(); // when user clicks on right arrow or swipe left
+  int goPrevious(); // when user clicks on left arrow or swipe right
   void onPageChanged(int index);
 
   // stream controller input
