@@ -1,5 +1,5 @@
 import '../../app/constants.dart';
-import '../../domain/models.dart';
+import '../../domain/model/models.dart';
 import '../response/responses.dart';
 import 'package:advanced_flutter_arabic/app/extensions.dart';
 
