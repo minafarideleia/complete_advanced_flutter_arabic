@@ -1,4 +1,4 @@
-import 'package:advanced_flutter_arabic/domain/models.dart';
+import 'package:advanced_flutter_arabic/domain/model/models.dart';
 import 'package:advanced_flutter_arabic/presentation/onboarding/viewmodel/onboarding_viewmodel.dart';
 import 'package:advanced_flutter_arabic/presentation/resources/assets_manager.dart';
 import 'package:advanced_flutter_arabic/presentation/resources/color_manager.dart';

@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:ffi';
 
-import 'package:advanced_flutter_arabic/domain/models.dart';
+import 'package:advanced_flutter_arabic/domain/model/models.dart';
 
 import '../../base/baseviewmodel.dart';
 import '../../resources/assets_manager.dart';
