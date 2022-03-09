@@ -1,5 +1,5 @@
 import 'package:advanced_flutter_arabic/presentation/forgot_password/forgot_password_view.dart';
-import 'package:advanced_flutter_arabic/presentation/login/login_view.dart';
+import 'package:advanced_flutter_arabic/presentation/login/view/login_view.dart';
 import 'package:advanced_flutter_arabic/presentation/main/main_view.dart';
 import 'package:advanced_flutter_arabic/presentation/onboarding/view/onboarding_view.dart';
 import 'package:advanced_flutter_arabic/presentation/register/register_view.dart';
