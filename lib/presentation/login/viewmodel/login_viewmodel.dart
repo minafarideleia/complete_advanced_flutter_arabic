@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:advanced_flutter_arabic/presentation/base/baseviewmodel.dart';
 
+import '../../common/freezed_data_classes.dart';
+
 class LoginViewModel extends BaseViewModel
     with LoginViewModelInputs, LoginViewModelOutputs {
   final StreamController _userNameStreamController =
@@ -33,11 +35,13 @@ class LoginViewModel extends BaseViewModel
   @override
   setPassword(String password) {
     inputPassword.add(password);
+    loginObject = loginObject.copyWith(password: password);
   }
 
   @override
   setUserName(String userName) {
     inputUserName.add(userName);
+    loginObject = loginObject.copyWith(userName: userName);
   }
 
   @override
