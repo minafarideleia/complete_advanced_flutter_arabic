@@ -1,5 +1,6 @@
 import 'package:advanced_flutter_arabic/presentation/login/viewmodel/login_viewmodel.dart';
 import 'package:advanced_flutter_arabic/presentation/resources/color_manager.dart';
+import 'package:advanced_flutter_arabic/presentation/resources/strings_manager.dart';
 import 'package:advanced_flutter_arabic/presentation/resources/values_manager.dart';
 import 'package:flutter/material.dart';
 
@@ -59,8 +60,36 @@ class _LoginViewState extends State<LoginView> {
                       stream: _viewModel.outIsUserNameValid,
                       builder: (context, snapshot) {
                         return TextFormField(
-                            keyboardType: TextInputType.emailAddress,
-                            controller: _userNameController);
+                          keyboardType: TextInputType.emailAddress,
+                          controller: _userNameController,
+                          decoration: InputDecoration(
+                              hintText: AppStrings.username,
+                              labelText: AppStrings.username,
+                              errorText: (snapshot.data ?? true)
+                                  ? null
+                                  : AppStrings.usernameError),
+                        );
+                      }),
+                ),
+                const SizedBox(
+                  height: AppSize.s28,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                      left: AppPadding.p28, right: AppPadding.p28),
+                  child: StreamBuilder<bool>(
+                      stream: _viewModel.outIsPasswordValid,
+                      builder: (context, snapshot) {
+                        return TextFormField(
+                          keyboardType: TextInputType.visiblePassword,
+                          controller: _userPasswordController,
+                          decoration: InputDecoration(
+                              hintText: AppStrings.password,
+                              labelText: AppStrings.password,
+                              errorText: (snapshot.data ?? true)
+                                  ? null
+                                  : AppStrings.passwordError),
+                        );
                       }),
                 )
               ],
