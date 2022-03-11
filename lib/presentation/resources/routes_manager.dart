@@ -8,6 +8,8 @@ import 'package:advanced_flutter_arabic/presentation/splash/splash_view.dart';
 import 'package:advanced_flutter_arabic/presentation/store_details/store_details_view.dart';
 import 'package:flutter/material.dart';
 
+import '../../app/di.dart';
+
 class Routes {
   static const String splashRoute = "/";
   static const String loginRoute = "/login";
@@ -24,6 +26,7 @@ class RouteGenerator {
       case Routes.splashRoute:
         return MaterialPageRoute(builder: (_) => const SplashView());
       case Routes.loginRoute:
+        initLoginModule();
         return MaterialPageRoute(builder: (_) => const LoginView());
       case Routes.onBoardingRoute:
         return MaterialPageRoute(builder: (_) => const OnBoardingView());
