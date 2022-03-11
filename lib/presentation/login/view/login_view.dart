@@ -91,7 +91,23 @@ class _LoginViewState extends State<LoginView> {
                                   : AppStrings.passwordError),
                         );
                       }),
-                )
+                ),
+                const SizedBox(
+                  height: AppSize.s28,
+                ),
+
+                Padding(
+                  padding: const EdgeInsets.only(
+                      left: AppPadding.p28, right: AppPadding.p28),
+                  child: StreamBuilder<bool>(
+                      stream: _viewModel.outIsPasswordValid,
+                      builder: (context, snapshot) {
+                        return ElevatedButton(onPressed: (){
+                          _viewModel.login();
+                        }, child: const Text(AppStrings.login));
+                      }),
+                ),
+
               ],
             ),
           ),
