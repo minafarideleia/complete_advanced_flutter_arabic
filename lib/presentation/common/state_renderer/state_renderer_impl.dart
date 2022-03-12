@@ -2,6 +2,7 @@ import 'dart:html';
 
 import 'package:advanced_flutter_arabic/app/constants.dart';
 import 'package:advanced_flutter_arabic/presentation/common/state_renderer/state_renderer.dart';
+import 'package:flutter/material.dart';
 
 import '../../resources/strings_manager.dart';
 
@@ -65,4 +66,32 @@ class EmptyState extends FlowState {
   @override
   StateRendererType getStateRendererType() =>
       StateRendererType.fullScreenEmptyState;
+}
+
+extension FlowStateExtension on FlowState {
+  Widget getScreenWidget(BuildContext context, Widget contentScreenWidget,
+      Function retryActionFunction) {
+    switch (runtimeType) {
+      case LoadingState:
+        {
+          break;
+        }
+      case ErrorState:
+        {
+          break;
+        }
+      case EmptyState:
+        {
+          break;
+        }
+      case ContentState:
+        {
+          break;
+        }
+      default:
+        {
+          break;
+        }
+    }
+  }
 }
