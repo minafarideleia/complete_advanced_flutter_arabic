@@ -38,8 +38,7 @@ class StateRenderer extends StatelessWidget {
   Widget _getStateWidget(BuildContext context) {
     switch (stateRendererType) {
       case StateRendererType.popupLoadingState:
-        // TODO: Handle this case.
-        break;
+        return _getPopUpDialog(context);
       case StateRendererType.popupErrorState:
         // TODO: Handle this case.
         break;
@@ -59,6 +58,25 @@ class StateRenderer extends StatelessWidget {
         break;
     }
   }
+
+  Widget _getPopUpDialog(BuildContext context) {
+    return Dialog(
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppSize.s14)),
+      elevation: AppSize.s1_5,
+      backgroundColor: Colors.transparent,
+      child: Container(
+        decoration: BoxDecoration(
+            color: ColorManager.white,
+            shape: BoxShape.rectangle,
+            borderRadius: BorderRadius.circular(AppSize.s14),
+            boxShadow: const [BoxShadow(color: Colors.black26)]),
+        child: _getDialogContent(context),
+      ),
+    );
+  }
+
+  Widget _getDialogContent(BuildContext context) {}
 
   Widget _getItemsColumn(List<Widget> children) {
     return Column(
