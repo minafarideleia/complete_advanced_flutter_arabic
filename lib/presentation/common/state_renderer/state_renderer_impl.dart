@@ -89,32 +89,44 @@ extension FlowStateExtension on FlowState {
         }
       case ErrorState:
         {
-          break;
+          if (getStateRendererType() == StateRendererType.popupErrorState) {
+            // show popup error
+            showPopup(context, getStateRendererType(), getMessage());
+            // show content ui of the screen
+            return contentScreenWidget;
+          } else {
+            // full screen loading state
+            return StateRenderer(
+                message: getMessage(),
+                stateRendererType: getStateRendererType(),
+                retryActionFunction: retryActionFunction);
+          }
         }
       case EmptyState:
         {
-          break;
+          return StateRenderer(
+              stateRendererType: getStateRendererType(),
+              message: getMessage(),
+              retryActionFunction: () {});
         }
       case ContentState:
         {
-          break;
+          return contentScreenWidget;
         }
       default:
         {
-          break;
+          return contentScreenWidget;
         }
     }
   }
 
   showPopup(BuildContext context, StateRendererType stateRendererType,
       String message) {
-    WidgetsBinding.instance?.addPostFrameCallback((_) =>
-        showDialog(
-            context: context,
-            builder: (BuildContext context) =>
-                StateRenderer(
-                    stateRendererType: stateRendererType,
-                    message: message,
-                    retryActionFunction: () {})));
+    WidgetsBinding.instance?.addPostFrameCallback((_) => showDialog(
+        context: context,
+        builder: (BuildContext context) => StateRenderer(
+            stateRendererType: stateRendererType,
+            message: message,
+            retryActionFunction: () {})));
   }
 }
