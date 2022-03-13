@@ -96,7 +96,7 @@ extension FlowStateExtension on FlowState {
             // show content ui of the screen
             return contentScreenWidget;
           } else {
-            // full screen loading state
+            // full screen error state
             return StateRenderer(
                 message: getMessage(),
                 stateRendererType: getStateRendererType(),
