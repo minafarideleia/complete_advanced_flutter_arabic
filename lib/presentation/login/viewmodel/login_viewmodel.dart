@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:advanced_flutter_arabic/presentation/base/baseviewmodel.dart';
+import 'package:advanced_flutter_arabic/presentation/common/state_renderer/state_renderer.dart';
 import 'package:advanced_flutter_arabic/presentation/common/state_renderer/state_renderer_impl.dart';
 
 import '../../../domain/usecase/login_usecase.dart';
@@ -61,16 +62,21 @@ class LoginViewModel extends BaseViewModel
 
   @override
   login() async {
+    inputState.add(
+        LoadingState(stateRendererType: StateRendererType.popupLoadingState));
     (await _loginUseCase.execute(
             LoginUseCaseInput(loginObject.userName, loginObject.password)))
         .fold(
             (failure) => {
                   // left -> failure
-                  print(failure.message)
+                  inputState.add(ErrorState(
+                      StateRendererType.popupErrorState, failure.message))
                 },
             (data) => {
                   // right -> data (success)
-                  print(data.customer?.name)
+                  // content
+                  inputState.add(ContentState())
+                  // navigate to main screen
                 });
   }
 
