@@ -3,6 +3,7 @@ import 'package:advanced_flutter_arabic/data/data_source/remote_data_source.dart
 import 'package:advanced_flutter_arabic/data/repository/repository_impl.dart';
 import 'package:advanced_flutter_arabic/domain/repository/repository.dart';
 import 'package:advanced_flutter_arabic/domain/usecase/login_usecase.dart';
+import 'package:advanced_flutter_arabic/presentation/common/state_renderer/state_renderer_impl.dart';
 import 'package:advanced_flutter_arabic/presentation/login/viewmodel/login_viewmodel.dart';
 import 'package:advanced_flutter_arabic/presentation/resources/color_manager.dart';
 import 'package:advanced_flutter_arabic/presentation/resources/strings_manager.dart';
@@ -43,13 +44,23 @@ class _LoginViewState extends State<LoginView> {
 
   @override
   Widget build(BuildContext context) {
-    return _getContentWidget();
+    return Scaffold(
+      backgroundColor: ColorManager.white,
+      body: StreamBuilder<FlowState>(
+        stream: _viewModel.outputState,
+        builder: (context, snapshot) {
+          return snapshot.data?.getScreenWidget(context, _getContentWidget(),
+                  () {
+                _viewModel.login();
+              }) ??
+              _getContentWidget();
+        },
+      ),
+    );
   }
 
   Widget _getContentWidget() {
-    return Scaffold(
-      backgroundColor: ColorManager.white,
-      body: Container(
+    return Container(
         padding: const EdgeInsets.only(top: AppPadding.p100),
         child: SingleChildScrollView(
           child: Form(
@@ -151,9 +162,7 @@ class _LoginViewState extends State<LoginView> {
               ],
             ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 
   @override
