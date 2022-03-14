@@ -24,6 +24,7 @@ class LoginView extends StatefulWidget {
 
 class _LoginViewState extends State<LoginView> {
   final LoginViewModel _viewModel = instance<LoginViewModel>();
+  final AppPreferences _appPreferences = instance<AppPreferences>();
 
   final TextEditingController _userNameController = TextEditingController();
   final TextEditingController _userPasswordController = TextEditingController();
@@ -41,6 +42,7 @@ class _LoginViewState extends State<LoginView> {
       if (isLoggedIn) {
         // navigate to main screen
         SchedulerBinding.instance?.addPostFrameCallback((_) {
+          _appPreferences.setUserLoggedIn();
           Navigator.of(context).pushReplacementNamed(Routes.mainRoute);
         });
       }
