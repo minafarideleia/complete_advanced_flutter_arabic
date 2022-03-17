@@ -7,6 +7,8 @@ import 'package:advanced_flutter_arabic/presentation/resources/strings_manager.d
 
 import '../../../app/functions.dart';
 import '../../common/freezed_data_classes.dart';
+import '../../common/state_renderer/state_renderer.dart';
+import '../../common/state_renderer/state_renderer_impl.dart';
 
 class RegisterViewModel extends BaseViewModel
     with RegisterViewModelInput, RegisterViewModelOutput {
@@ -63,9 +65,29 @@ class RegisterViewModel extends BaseViewModel
   Sink get inputAllInputsValid => areAllInputsValidStreamController.sink;
 
   @override
-  register() {
-    // TODO: implement register
-    throw UnimplementedError();
+  register() async {
+    inputState.add(
+        LoadingState(stateRendererType: StateRendererType.popupLoadingState));
+
+    (await _registerUseCase.execute(RegisterUseCaseInput(
+            registerObject.userName,
+            registerObject.countryMobileCode,
+            registerObject.mobileNumber,
+            registerObject.email,
+            registerObject.password,
+            registerObject.profilePicture)))
+        .fold(
+            (failure) => {
+                  // left -> failure
+                  inputState.add(ErrorState(
+                      StateRendererType.popupErrorState, failure.message))
+                }, (data) {
+      // right -> data (success)
+      // content
+      inputState.add(ContentState());
+      // navigate to main screen
+      // isUserLoggedInSuccessfullyStreamController.add(true);
+    });
   }
 
   @override
