@@ -1,4 +1,7 @@
+import 'package:advanced_flutter_arabic/presentation/common/state_renderer/state_renderer_impl.dart';
 import 'package:advanced_flutter_arabic/presentation/register/view_model/register_viewmodel.dart';
+import 'package:advanced_flutter_arabic/presentation/resources/color_manager.dart';
+import 'package:advanced_flutter_arabic/presentation/resources/values_manager.dart';
 import 'package:flutter/material.dart';
 
 import '../../../app/di.dart';
@@ -48,6 +51,27 @@ class _RegisterViewState extends State<RegisterView> {
 
   @override
   Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: ColorManager.white,
+      appBar: AppBar(
+        elevation: AppSize.s0,
+        backgroundColor: ColorManager.white,
+        iconTheme: IconThemeData(color: ColorManager.primary),
+      ),
+      body: StreamBuilder<FlowState>(
+        stream: _viewModel.outputState,
+        builder: (context, snapshot) {
+          return snapshot.data?.getScreenWidget(context, _getContentWidget(),
+                  () {
+                _viewModel.register();
+              }) ??
+              _getContentWidget();
+        },
+      ),
+    );
+  }
+
+  Widget _getContentWidget() {
     return Container();
   }
 
