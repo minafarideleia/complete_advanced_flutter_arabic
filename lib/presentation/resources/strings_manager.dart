@@ -31,4 +31,7 @@ class AppStrings {
   static const String userNameInvalid = "User name should be at least 8 chars";
   static const String mobileNumberInvalid = "Mobile should be at least 10 digits";
   static const String passwordInvalid = "Password should be at least 6 chars";
+  static const String alreadyHaveAccount = "Already have an account ? Login";
+  static const register = "Register";
+
 }
