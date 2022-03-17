@@ -6,6 +6,7 @@ import 'package:advanced_flutter_arabic/presentation/base/baseviewmodel.dart';
 import 'package:advanced_flutter_arabic/presentation/resources/strings_manager.dart';
 
 import '../../../app/functions.dart';
+import '../../common/freezed_data_classes.dart';
 
 class RegisterViewModel extends BaseViewModel
     with RegisterViewModelInput, RegisterViewModelOutput {
@@ -22,6 +23,7 @@ class RegisterViewModel extends BaseViewModel
       StreamController<void>.broadcast();
 
   final RegisterUseCase _registerUseCase;
+  var registerObject = RegisterObject("", "", "", "", "", "");
 
   RegisterViewModel(this._registerUseCase);
 
