@@ -36,4 +36,6 @@ class AppStrings {
   static const register = "Register";
   static const mobileNumber = "Mobile Number";
   static const profilePicture = "Profile picture";
+  static const photoGallery = "Photo from galley";
+  static const photoCamera = "Photo from camera";
 }
