@@ -40,7 +40,7 @@ class _MainViewState extends State<MainView> {
       body: pages[_currentIndex],
       bottomNavigationBar: Container(
         decoration: BoxDecoration(boxShadow: [
-          BoxShadow(color: ColorManager.black, spreadRadius: AppSize.s1_5)
+          BoxShadow(color: ColorManager.lightGrey, spreadRadius: AppSize.s1)
         ]),
         child: BottomNavigationBar(
           selectedItemColor: ColorManager.primary,
