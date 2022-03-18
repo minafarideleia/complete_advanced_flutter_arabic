@@ -127,7 +127,7 @@ class _RegisterViewState extends State<RegisterView> {
                                 _viewModel.setCountryCode(
                                     country.code ?? Constants.token);
                               },
-                              initialSelection: '+02',
+                              initialSelection: '+20',
                               favorite: const ['+39', 'FR', "+966"],
                               // optional. Shows only country name and flag
                               showCountryOnly: true,
