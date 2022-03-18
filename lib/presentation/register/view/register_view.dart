@@ -200,7 +200,9 @@ class _RegisterViewState extends State<RegisterView> {
                   child: Container(
                     height: AppSize.s40,
                     decoration: BoxDecoration(
-                        border: Border.all(color: ColorManager.lightGrey)),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(AppSize.s8)),
+                        border: Border.all(color: ColorManager.grey)),
                     child: GestureDetector(
                       child: _getMediaWidget(),
                       onTap: () {
@@ -237,7 +239,9 @@ class _RegisterViewState extends State<RegisterView> {
                       left: AppPadding.p28,
                       right: AppPadding.p28),
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
                     child: Text(AppStrings.alreadyHaveAccount,
                         style: Theme.of(context).textTheme.titleMedium),
                   ),
@@ -283,7 +287,7 @@ class _RegisterViewState extends State<RegisterView> {
     _viewModel.setProfilePicture(File(image?.path ?? ""));
   }
 
-  _imageFromCamera() async{
+  _imageFromCamera() async {
     var image = await _imagePicker.pickImage(source: ImageSource.camera);
     _viewModel.setProfilePicture(File(image?.path ?? ""));
   }
