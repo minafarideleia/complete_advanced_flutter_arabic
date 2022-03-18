@@ -125,7 +125,7 @@ class _RegisterViewState extends State<RegisterView> {
                               onChanged: (country) {
                                 // update view model with code
                                 _viewModel.setCountryCode(
-                                    country.code ?? Constants.token);
+                                    country.dialCode ?? Constants.token);
                               },
                               initialSelection: '+20',
                               favorite: const ['+39', 'FR', "+966"],
