@@ -111,7 +111,62 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _getServices() {
-    return Center();
+    return StreamBuilder<List<Service>>(
+        stream: _viewModel.outputServices,
+        builder: (context, snapshot) {
+          return _getServicesWidget(snapshot.data);
+        });
+  }
+
+  Widget _getServicesWidget(List<Service>? services) {
+    if (services != null) {
+      return Padding(
+        padding:
+            const EdgeInsets.only(left: AppPadding.p12, right: AppPadding.p12),
+        child: Container(
+          height: AppSize.s140,
+          margin: const EdgeInsets.symmetric(vertical: AppMargin.m12),
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: services
+                .map((service) => Card(
+                      elevation: AppSize.s4,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(AppSize.s12),
+                          side: BorderSide(
+                              color: ColorManager.primary, width: AppSize.s1)),
+                      child: Column(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(AppSize.s12),
+                            child: Image.network(
+                              service.image,
+                              fit: BoxFit.cover,
+                              width: AppSize.s100,
+                              height: AppSize.s100,
+                            ),
+                          ),
+                          Padding(
+                              padding:
+                                  const EdgeInsets.only(top: AppPadding.p8),
+                              child: Align(
+                                alignment: Alignment.center,
+                                child: Text(
+                                  service.title,
+                                  style: Theme.of(context).textTheme.caption,
+                                  textAlign: TextAlign.center,
+                                ),
+                              ))
+                        ],
+                      ),
+                    ))
+                .toList(),
+          ),
+        ),
+      );
+    } else {
+      return Container();
+    }
   }
 
   Widget _getStores() {
