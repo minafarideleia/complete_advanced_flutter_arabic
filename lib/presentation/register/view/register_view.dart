@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:advanced_flutter_arabic/app/constants.dart';
 import 'package:advanced_flutter_arabic/presentation/common/state_renderer/state_renderer_impl.dart';
 import 'package:advanced_flutter_arabic/presentation/register/view_model/register_viewmodel.dart';
@@ -5,6 +7,7 @@ import 'package:advanced_flutter_arabic/presentation/resources/color_manager.dar
 import 'package:advanced_flutter_arabic/presentation/resources/values_manager.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../app/di.dart';
 import '../../resources/assets_manager.dart';
@@ -241,6 +244,35 @@ class _RegisterViewState extends State<RegisterView> {
             ),
           ),
         ));
+  }
+
+  Widget _getMediaWidget() {
+    return Padding(
+      padding: const EdgeInsets.only(left: AppPadding.p8, right: AppPadding.p8),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const Flexible(child: Text(AppStrings.profilePicture)),
+          Flexible(
+              child: StreamBuilder<File>(
+            stream: _viewModel.outputProfilePicture,
+            builder: (context, snapshot) {
+              return _imagePicketByUser(snapshot.data);
+            },
+          )),
+          Flexible(child: SvgPicture.asset(ImageAssets.photoCameraIc))
+        ],
+      ),
+    );
+  }
+
+  Widget _imagePicketByUser(File? image) {
+    if (image != null && image.path.isNotEmpty) {
+      // return image
+      return Image.file(image);
+    } else {
+      return Container();
+    }
   }
 
   @override
