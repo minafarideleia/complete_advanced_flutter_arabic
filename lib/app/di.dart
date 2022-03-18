@@ -5,9 +5,11 @@ import 'package:advanced_flutter_arabic/data/network/dio_factory.dart';
 import 'package:advanced_flutter_arabic/data/network/network_info.dart';
 import 'package:advanced_flutter_arabic/data/repository/repository_impl.dart';
 import 'package:advanced_flutter_arabic/domain/repository/repository.dart';
+import 'package:advanced_flutter_arabic/domain/usecase/home_usecase.dart';
 import 'package:advanced_flutter_arabic/domain/usecase/login_usecase.dart';
 import 'package:advanced_flutter_arabic/domain/usecase/register_usecase.dart';
 import 'package:advanced_flutter_arabic/presentation/login/viewmodel/login_viewmodel.dart';
+import 'package:advanced_flutter_arabic/presentation/main/pages/home/viewmodel/home_viewmodel.dart';
 import 'package:advanced_flutter_arabic/presentation/register/view_model/register_viewmodel.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
@@ -76,5 +78,12 @@ initRegisterModule() {
     instance.registerFactory<RegisterViewModel>(
         () => RegisterViewModel(instance()));
     instance.registerFactory<ImagePicker>(() => ImagePicker());
+  }
+}
+
+initHomeModule() {
+  if (!GetIt.I.isRegistered<HomeUseCase>()) {
+    instance.registerFactory<HomeUseCase>(() => HomeUseCase(instance()));
+    instance.registerFactory<HomeViewModel>(() => HomeViewModel(instance()));
   }
 }
