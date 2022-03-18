@@ -60,3 +60,34 @@ extension BannersResponseMapper on BannersResponse? {
         this?.link.orEmpty() ?? Constants.empty);
   }
 }
+
+extension HomeResponseMapper on HomeResponse? {
+  HomeObject toDomain() {
+    List<Service> services = (this
+                ?.data
+                ?.services
+                ?.map((serviceResponse) => serviceResponse.toDomain()) ??
+            const Iterable.empty())
+        .cast<Service>()
+        .toList();
+
+    List<BannerAd> banners = (this
+                ?.data
+                ?.banners
+                ?.map((bannersResponse) => bannersResponse.toDomain()) ??
+            const Iterable.empty())
+        .cast<BannerAd>()
+        .toList();
+
+    List<Store> stores = (this
+                ?.data
+                ?.stores
+                ?.map((storesResponse) => storesResponse.toDomain()) ??
+            const Iterable.empty())
+        .cast<Store>()
+        .toList();
+
+    var data = HomeData(services, banners, stores);
+    return HomeObject(data);
+  }
+}
