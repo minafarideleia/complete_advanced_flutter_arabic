@@ -1,5 +1,5 @@
 {
-  "no_route_found": "No Route found",
+  "no_route_found": "noRouteFound",
   "on_boarding_title1": "SEE THE BEST COURSE #1",
   "on_boarding_title2": "SEE THE BEST COURSE #2",
   "on_boarding_title3": "SEE THE BEST COURSE #3",
@@ -55,5 +55,13 @@
   "contact_us": "Contact Us",
   "invite_your_friends": "Invite Your Friends",
   "logout": "Logout",
-  "reset_password": "Reset Password"
+  "reset_password": "Reset Password",
+  "username_error": "Please enter your userName",
+  "password_error": "Please enter your Password",
+  "email_error": "Email format is wrong",
+  "username_hint_message": "User name should be at least 8 chars",
+  "mobile_number_hint_message": "Mobile should be at least 10 digits",
+  "password_hint_message": "Password should be at least 6 chars",
+  "photo_from_galley": "Photo from galley",
+  "photo_from_camera": "Photo from camera"
 }
