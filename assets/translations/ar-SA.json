@@ -54,6 +54,13 @@
   "contact_us": "اتصل بنا",
   "invite_your_friends": "قم بدعوة أصدقائك",
   "logout": "تسجيل الخروج",
-  "reset_password": "اعاده تعيين كلمه السر"
-
+  "reset_password": "اعاده تعيين كلمه السر",
+  "username_error": "الرجاء إدخال اسم المستخدم الخاص بك" ,
+  "خطأ_كلمة المرور": "الرجاء إدخال كلمة المرور" ,
+  "email_error": "تنسيق البريد الإلكتروني خاطئ" ,
+  "username_hint_message": "يجب ألا يقل اسم المستخدم عن 8 أحرف",
+  "mobile_number_hint_message": "يجب ألا يقل رقم الجوال عن 10 أرقام",
+  "password_hint_message": "يجب أن تكون كلمة المرور 6 أحرف على الأقل" ,
+  "photo_from_galley": "صورة من الجاليري",
+  "photo_from_camera": "صورة من الكاميرا"
 }
