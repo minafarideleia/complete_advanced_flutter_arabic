@@ -1,5 +1,5 @@
 class AppStrings {
-  static const noRouteFound = "No Route Found";
+  static const noRouteFound = "noRouteFound";
   static const onBoardingTitle1 = "on_boarding_title1";
   static const onBoardingTitle2 = "on_boarding_title2";
   static const onBoardingTitle3 = "on_boarding_title3";
