@@ -18,7 +18,8 @@ class RepositoryImpl implements Repository {
   final LocalDataSource _localDataSource;
   final NetworkInfo _networkInfo;
 
-  RepositoryImpl(this._remoteDataSource, this._networkInfo, this._localDataSource);
+  RepositoryImpl(this._remoteDataSource, this._networkInfo,
+      this._localDataSource);
 
   @override
   Future<Either<Failure, Authentication>> login(
@@ -40,7 +41,9 @@ class RepositoryImpl implements Repository {
               response.message ?? ResponseMessage.DEFAULT));
         }
       } catch (error) {
-        return Left(ErrorHandler.handle(error).failure);
+        return Left(ErrorHandler
+            .handle(error)
+            .failure);
       }
     } else {
       // return internet connection error
@@ -67,7 +70,9 @@ class RepositoryImpl implements Repository {
               response.message ?? ResponseMessage.DEFAULT));
         }
       } catch (error) {
-        return Left(ErrorHandler.handle(error).failure);
+        return Left(ErrorHandler
+            .handle(error)
+            .failure);
       }
     } else {
       // return network connection error
@@ -96,7 +101,9 @@ class RepositoryImpl implements Repository {
               response.message ?? ResponseMessage.DEFAULT));
         }
       } catch (error) {
-        return Left(ErrorHandler.handle(error).failure);
+        return Left(ErrorHandler
+            .handle(error)
+            .failure);
       }
     } else {
       // return internet connection error
@@ -107,13 +114,11 @@ class RepositoryImpl implements Repository {
 
   @override
   Future<Either<Failure, HomeObject>> getHomeData() async {
-
-    try{
+    try {
       // get response from cache
       final response = await _localDataSource.getHomeData();
       return Right(response.toDomain());
-
-    }catch(cacheError){
+    } catch (cacheError) {
       // cache is not existing or cache is not valid
 
       // its the time to get from API side
@@ -139,13 +144,15 @@ class RepositoryImpl implements Repository {
                 response.message ?? ResponseMessage.DEFAULT));
           }
         } catch (error) {
-          return Left(ErrorHandler.handle(error).failure);
+          return Left(ErrorHandler
+              .handle(error)
+              .failure);
         }
       } else {
         // return internet connection error
         // return either left
         return Left(DataSource.NO_INTERNET_CONNECTION.getFailure());
-
+      }
     }
   }
 }
