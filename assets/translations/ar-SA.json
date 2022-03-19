@@ -61,6 +61,6 @@
   "username_hint_message": "يجب ألا يقل اسم المستخدم عن 8 أحرف",
   "mobile_number_hint_message": "يجب ألا يقل رقم الجوال عن 10 أرقام",
   "password_hint_message": "يجب أن تكون كلمة المرور 6 أحرف على الأقل" ,
-  "photo_from_galley": "صورة من المطبخ",
+  "photo_from_galley": "صورة من الجاليري",
   "photo_from_camera": "صورة من الكاميرا"
 }
