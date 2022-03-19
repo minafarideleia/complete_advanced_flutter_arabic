@@ -19,7 +19,9 @@ import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../domain/usecase/forgot_password_usecase.dart';
+import '../domain/usecase/store_details_usecase.dart';
 import '../presentation/forgot_password/forgot_password_viewmodel.dart';
+import '../presentation/store_details/store_details_viewmodel.dart';
 
 final instance = GetIt.instance;
 
@@ -51,8 +53,7 @@ Future<void> initAppModule() async {
       () => RemoteDataSourceImpl(instance<AppServiceClient>()));
 
   // local data source
-  instance.registerLazySingleton<LocalDataSource>(
-      () => LocalDataSourceImpl());
+  instance.registerLazySingleton<LocalDataSource>(() => LocalDataSourceImpl());
 
   // repository
 
@@ -90,5 +91,14 @@ initHomeModule() {
   if (!GetIt.I.isRegistered<HomeUseCase>()) {
     instance.registerFactory<HomeUseCase>(() => HomeUseCase(instance()));
     instance.registerFactory<HomeViewModel>(() => HomeViewModel(instance()));
+  }
+}
+
+initStoreDetailsModule() {
+  if (!GetIt.I.isRegistered<StoreDetailsUseCase>()) {
+    instance.registerFactory<StoreDetailsUseCase>(
+        () => StoreDetailsUseCase(instance()));
+    instance.registerFactory<StoreDetailsViewModel>(
+        () => StoreDetailsViewModel(instance()));
   }
 }
