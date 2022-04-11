@@ -1,4 +1,3 @@
-import 'dart:html';
 
 import 'package:advanced_flutter_arabic/app/constants.dart';
 import 'package:advanced_flutter_arabic/presentation/common/state_renderer/state_renderer.dart';
