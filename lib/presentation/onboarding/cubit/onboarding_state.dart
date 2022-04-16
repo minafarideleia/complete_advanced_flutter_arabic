@@ -8,3 +8,13 @@ abstract class OnboardingState extends Equatable {
 }
 
 class OnboardingInitial extends OnboardingState {}
+class OnboardingLoadInProgress extends OnboardingState {}
+
+
+class OnboardingPostDataToView extends OnboardingState {
+   SliderViewObject sliderViewObject;
+
+   OnboardingPostDataToView(
+    this.sliderViewObject,
+  );
+}

@@ -1,13 +1,13 @@
-abstract class BaseBloc extends BaseBlocInputs with BaseBlocOutputs {
+abstract class BaseBloc extends _BaseBlocInputs with _BaseBlocOutputs {
   // shared variables and function that will be used through any view model.
 }
 
-abstract class BaseBlocInputs {
+abstract class _BaseBlocInputs {
   void start(); // start view model job
 
   void dispose(); // will be called when view model dies
 }
 
-abstract class BaseBlocOutputs {
+abstract class _BaseBlocOutputs {
   // will be implemented later
 }
