@@ -29,27 +29,34 @@ class _OnBoardingViewState extends State<OnBoardingView> {
     return BlocBuilder<OnboardingCubit, OnboardingState>(
       builder: (context, state) {
         if (state is OnboardingPostDataToView) {
-          return Scaffold(
-            backgroundColor: ColorManager.white,
-            appBar: AppBar(
-              backgroundColor: ColorManager.white,
-              elevation: AppSize.s0,
-              systemOverlayStyle: SystemUiOverlayStyle(
-                  statusBarColor: ColorManager.white,
-                  statusBarBrightness: Brightness.dark),
-            ),
-            body: PageView.builder(
-                controller: _pageController,
-                itemCount: state.sliderViewObject.numOfSlides,
-                onPageChanged: (index) {
-                  context.read<OnboardingCubit>().onPageChanged(index);
-                },
-                itemBuilder: (context, index) {
-                  return OnBoardingPage(state.sliderViewObject.sliderObject);
-                }),
-            bottomSheet: BottomSheetWidget(
-              pageController: _pageController,
-              sliderViewObject: state.sliderViewObject,
+          return Container(
+            color: ColorManager.primary,
+            child: SafeArea(
+              top: false,
+              child: Scaffold(
+                backgroundColor: ColorManager.white,
+                appBar: AppBar(
+                  backgroundColor: ColorManager.white,
+                  elevation: AppSize.s0,
+                  systemOverlayStyle: SystemUiOverlayStyle(
+                      statusBarColor: ColorManager.white,
+                      statusBarBrightness: Brightness.dark),
+                ),
+                body: PageView.builder(
+                    controller: _pageController,
+                    itemCount: state.sliderViewObject.numOfSlides,
+                    onPageChanged: (index) {
+                      context.read<OnboardingCubit>().onPageChanged(index);
+                    },
+                    itemBuilder: (context, index) {
+                      return OnBoardingPage(
+                          state.sliderViewObject.sliderObject);
+                    }),
+                bottomSheet: BottomSheetWidget(
+                  pageController: _pageController,
+                  sliderViewObject: state.sliderViewObject,
+                ),
+              ),
             ),
           );
         }
