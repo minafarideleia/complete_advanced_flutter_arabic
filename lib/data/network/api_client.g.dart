@@ -18,7 +18,7 @@ class _ApiClient implements ApiClient {
   String? baseUrl;
 
   @override
-  Future<AuthenticactsResponse> login(email, password, ime, deviceType) async {
+  Future<Authenticacts> login(email, password, ime, deviceType) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -29,12 +29,12 @@ class _ApiClient implements ApiClient {
       'device_type': deviceType
     };
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<AuthenticactsResponse>(
+        _setStreamType<Authenticacts>(
             Options(method: 'POST', headers: _headers, extra: _extra)
                 .compose(_dio.options, '/customers/login',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = AuthenticactsResponse.fromJson(_result.data!);
+    final value = Authenticacts.fromJson(_result.data!);
     return value;
   }
 

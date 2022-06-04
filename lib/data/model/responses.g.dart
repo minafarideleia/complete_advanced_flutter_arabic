@@ -6,18 +6,16 @@ part of 'responses.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-BaseResponse _$BaseResponseFromJson(Map<String, dynamic> json) => BaseResponse()
+BaseModel _$BaseModelFromJson(Map<String, dynamic> json) => BaseModel()
   ..status = json['status'] as int? ?? 0
   ..message = json['message'] as String? ?? '';
 
-Map<String, dynamic> _$BaseResponseToJson(BaseResponse instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$BaseModelToJson(BaseModel instance) => <String, dynamic>{
       'status': instance.status,
       'message': instance.message,
     };
 
-CustomerResponse _$CustomerResponseFromJson(Map<String, dynamic> json) =>
-    CustomerResponse(
+Customer _$CustomerFromJson(Map<String, dynamic> json) => Customer(
       id: json['id'] as String? ?? '',
       name: json['name'] as String? ?? '',
       numOfNotifications: json['num_of_notifications'] as int? ?? 0,
@@ -25,8 +23,7 @@ CustomerResponse _$CustomerResponseFromJson(Map<String, dynamic> json) =>
       ..status = json['status'] as int? ?? 0
       ..message = json['message'] as String? ?? '';
 
-Map<String, dynamic> _$CustomerResponseToJson(CustomerResponse instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$CustomerToJson(Customer instance) => <String, dynamic>{
       'status': instance.status,
       'message': instance.message,
       'id': instance.id,
@@ -34,8 +31,7 @@ Map<String, dynamic> _$CustomerResponseToJson(CustomerResponse instance) =>
       'num_of_notifications': instance.numOfNotifications,
     };
 
-ConstactsResponse _$ConstactsResponseFromJson(Map<String, dynamic> json) =>
-    ConstactsResponse(
+Constacts _$ConstactsFromJson(Map<String, dynamic> json) => Constacts(
       phone: json['phone'] as String? ?? '',
       email: json['email'] as String? ?? '',
       link: json['link'] as String? ?? '',
@@ -43,8 +39,7 @@ ConstactsResponse _$ConstactsResponseFromJson(Map<String, dynamic> json) =>
       ..status = json['status'] as int? ?? 0
       ..message = json['message'] as String? ?? '';
 
-Map<String, dynamic> _$ConstactsResponseToJson(ConstactsResponse instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$ConstactsToJson(Constacts instance) => <String, dynamic>{
       'status': instance.status,
       'message': instance.message,
       'phone': instance.phone,
@@ -52,19 +47,15 @@ Map<String, dynamic> _$ConstactsResponseToJson(ConstactsResponse instance) =>
       'link': instance.link,
     };
 
-AuthenticactsResponse _$AuthenticactsResponseFromJson(
-        Map<String, dynamic> json) =>
-    AuthenticactsResponse(
-      customer:
-          CustomerResponse.fromJson(json['customer'] as Map<String, dynamic>),
-      constacts:
-          ConstactsResponse.fromJson(json['constacts'] as Map<String, dynamic>),
+Authenticacts _$AuthenticactsFromJson(Map<String, dynamic> json) =>
+    Authenticacts(
+      customer: Customer.fromJson(json['customer'] as Map<String, dynamic>),
+      constacts: Constacts.fromJson(json['constacts'] as Map<String, dynamic>),
     )
       ..status = json['status'] as int? ?? 0
       ..message = json['message'] as String? ?? '';
 
-Map<String, dynamic> _$AuthenticactsResponseToJson(
-        AuthenticactsResponse instance) =>
+Map<String, dynamic> _$AuthenticactsToJson(Authenticacts instance) =>
     <String, dynamic>{
       'status': instance.status,
       'message': instance.message,
