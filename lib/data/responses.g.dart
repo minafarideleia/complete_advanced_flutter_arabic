@@ -7,8 +7,8 @@ part of 'responses.dart';
 // **************************************************************************
 
 BaseResponse _$BaseResponseFromJson(Map<String, dynamic> json) => BaseResponse()
-  ..status = json['status'] as int?
-  ..message = json['message'] as String?;
+  ..status = json['status'] as int? ?? 0
+  ..message = json['message'] as String? ?? '';
 
 Map<String, dynamic> _$BaseResponseToJson(BaseResponse instance) =>
     <String, dynamic>{
@@ -18,12 +18,12 @@ Map<String, dynamic> _$BaseResponseToJson(BaseResponse instance) =>
 
 CustomerResponse _$CustomerResponseFromJson(Map<String, dynamic> json) =>
     CustomerResponse(
-      id: json['id'] as String?,
-      name: json['name'] as String?,
-      numOfNotifications: json['num_of_notifications'] as int?,
+      id: json['id'] as String? ?? '',
+      name: json['name'] as String? ?? '',
+      numOfNotifications: json['num_of_notifications'] as int? ?? 0,
     )
-      ..status = json['status'] as int?
-      ..message = json['message'] as String?;
+      ..status = json['status'] as int? ?? 0
+      ..message = json['message'] as String? ?? '';
 
 Map<String, dynamic> _$CustomerResponseToJson(CustomerResponse instance) =>
     <String, dynamic>{
@@ -36,12 +36,12 @@ Map<String, dynamic> _$CustomerResponseToJson(CustomerResponse instance) =>
 
 ConstactsResponse _$ConstactsResponseFromJson(Map<String, dynamic> json) =>
     ConstactsResponse(
-      phone: json['phone'] as String?,
-      email: json['email'] as String?,
-      link: json['link'] as String?,
+      phone: json['phone'] as String? ?? '',
+      email: json['email'] as String? ?? '',
+      link: json['link'] as String? ?? '',
     )
-      ..status = json['status'] as int?
-      ..message = json['message'] as String?;
+      ..status = json['status'] as int? ?? 0
+      ..message = json['message'] as String? ?? '';
 
 Map<String, dynamic> _$ConstactsResponseToJson(ConstactsResponse instance) =>
     <String, dynamic>{
@@ -55,16 +55,13 @@ Map<String, dynamic> _$ConstactsResponseToJson(ConstactsResponse instance) =>
 AuthenticactsResponse _$AuthenticactsResponseFromJson(
         Map<String, dynamic> json) =>
     AuthenticactsResponse(
-      customer: json['customer'] == null
-          ? null
-          : CustomerResponse.fromJson(json['customer'] as Map<String, dynamic>),
-      constacts: json['constacts'] == null
-          ? null
-          : ConstactsResponse.fromJson(
-              json['constacts'] as Map<String, dynamic>),
+      customer:
+          CustomerResponse.fromJson(json['customer'] as Map<String, dynamic>),
+      constacts:
+          ConstactsResponse.fromJson(json['constacts'] as Map<String, dynamic>),
     )
-      ..status = json['status'] as int?
-      ..message = json['message'] as String?;
+      ..status = json['status'] as int? ?? 0
+      ..message = json['message'] as String? ?? '';
 
 Map<String, dynamic> _$AuthenticactsResponseToJson(
         AuthenticactsResponse instance) =>

@@ -1,17 +1,22 @@
+import 'package:advanced_flutter_arabic/app/constants.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'responses.g.dart';
 
 @JsonSerializable()
 class BaseResponse {
+  @JsonKey(defaultValue: Constants.emptyInt)
   int? status;
+  @JsonKey(defaultValue: Constants.emptyString)
   String? message;
 }
 
 @JsonSerializable()
 class CustomerResponse extends BaseResponse {
+  @JsonKey(defaultValue: Constants.emptyString)
   String? id;
+  @JsonKey(defaultValue: Constants.emptyString)
   String? name;
-  @JsonKey(name: 'num_of_notifications')
+  @JsonKey(name: 'num_of_notifications', defaultValue: Constants.emptyInt)
   int? numOfNotifications;
 
   CustomerResponse({
@@ -30,8 +35,11 @@ class CustomerResponse extends BaseResponse {
 
 @JsonSerializable()
 class ConstactsResponse extends BaseResponse {
+  @JsonKey(defaultValue: Constants.emptyString)
   String? phone;
+  @JsonKey(defaultValue: Constants.emptyString)
   String? email;
+  @JsonKey(defaultValue: Constants.emptyString)
   String? link;
 
   ConstactsResponse({
@@ -50,12 +58,12 @@ class ConstactsResponse extends BaseResponse {
 
 @JsonSerializable()
 class AuthenticactsResponse extends BaseResponse {
-  CustomerResponse? customer;
-  ConstactsResponse? constacts;
+  final CustomerResponse customer;
+  final ConstactsResponse constacts;
 
   AuthenticactsResponse({
-    this.customer,
-    this.constacts,
+    required this.customer,
+    required this.constacts,
   });
 
   ///* A factory constructor for creating a new [AuthenticactsResponse] instance
