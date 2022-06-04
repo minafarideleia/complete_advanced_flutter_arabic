@@ -2,7 +2,7 @@ import 'package:advanced_flutter_arabic/app/constants.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/http.dart';
 
-import '../model/responses.dart';
+import '../../domain/models/responses.dart';
 
 part 'api_client.g.dart';
 
