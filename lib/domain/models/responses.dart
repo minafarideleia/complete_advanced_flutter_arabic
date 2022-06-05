@@ -1,4 +1,5 @@
 import 'package:advanced_flutter_arabic/app/constants.dart';
+import 'package:advanced_flutter_arabic/data/network/error_handler.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'responses.g.dart';
@@ -7,7 +8,7 @@ part 'responses.g.dart';
 class BaseModel {
   @JsonKey(defaultValue: Constants.emptyInt)
   late int status;
-  @JsonKey(defaultValue: Constants.emptyString)
+  @JsonKey(defaultValue: ResponseMessage.defaultError)
   late String message;
 }
 

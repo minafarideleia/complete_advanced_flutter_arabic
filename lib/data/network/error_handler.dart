@@ -30,8 +30,8 @@ Failure _handleError(DioError error) {
         return Failure(
             error.response!.statusCode!, error.response!.statusMessage!);
       } else {
-        // @TODO: we can handle this error better, but for now we will just return default error
-        // we can add for loop in enum below to handle all the errors
+        /// #TODO: we can handle this error better, but for now we will just return default error
+        /// #TODO: we can add for loop in enum below to handle all the errors
         return DataSource.defaultError.getFailure();
       }
     case DioErrorType.cancel:
@@ -140,4 +140,9 @@ class ResponseMessage {
   static const String noInternetConnection =
       'Please check your internet connection';
   static const String defaultError = 'Some thing went wrong, Try again later';
+}
+
+class ApiInernalStatusCode {
+  static const int success = 1;
+  static const int failure = 0;
 }
