@@ -4,7 +4,7 @@ import 'package:advanced_flutter_arabic/domain/models/responses.dart';
 import '../../dto/login.dart';
 
 abstract class RemoteDataSource {
-  Future<Authenticacts> login(LoginDto loginDto);
+  Future<Authentication> login(LoginDto loginDto);
 }
 
 class RemoteDataSourceImpl implements RemoteDataSource {
@@ -12,7 +12,7 @@ class RemoteDataSourceImpl implements RemoteDataSource {
 
   RemoteDataSourceImpl(this._apiClient);
   @override
-  Future<Authenticacts> login(LoginDto loginDto) async {
+  Future<Authentication> login(LoginDto loginDto) async {
     final response =
         await _apiClient.login(loginDto.email, loginDto.password, '', '');
     return response;

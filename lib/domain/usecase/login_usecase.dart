@@ -5,12 +5,12 @@ import 'package:advanced_flutter_arabic/domain/repository/repositories.dart';
 import 'package:advanced_flutter_arabic/domain/usecase/base_usecase.dart';
 import 'package:dartz/dartz.dart';
 
-class LoginUseCase extends BaseUseCase<LoginDto, Authenticacts> {
+class LoginUseCase extends BaseUseCase<LoginDto, Authentication> {
   final Repositories _repositories;
 
   LoginUseCase(this._repositories);
   @override
-  Future<Either<Failure, Authenticacts>> execute(LoginDto input) async {
+  Future<Either<Failure, Authentication>> execute(LoginDto input) async {
     return await _repositories.login(input);
   }
 }

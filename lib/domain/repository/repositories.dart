@@ -8,7 +8,7 @@ import 'package:dartz/dartz.dart';
 import '../../data/network/failure.dart';
 
 abstract class Repositories {
-  Future<Either<Failure, Authenticacts>> login(LoginDto loginDto);
+  Future<Either<Failure, Authentication>> login(LoginDto loginDto);
 }
 
 class RepositoriesImpl implements Repositories {
@@ -18,7 +18,7 @@ class RepositoriesImpl implements Repositories {
   RepositoriesImpl(this._remoteDataSource, this._networkInfo);
 
   @override
-  Future<Either<Failure, Authenticacts>> login(LoginDto loginDto) async {
+  Future<Either<Failure, Authentication>> login(LoginDto loginDto) async {
     if (await _networkInfo.isConnected) {
       try {
         final response = await _remoteDataSource.login(loginDto);

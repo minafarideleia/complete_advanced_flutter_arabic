@@ -59,19 +59,19 @@ class Constacts extends BaseModel {
 }
 
 @JsonSerializable()
-class Authenticacts extends BaseModel {
+class Authentication extends BaseModel {
   final Customer customer;
   final Constacts constacts;
 
-  Authenticacts({
+  Authentication({
     required this.customer,
     required this.constacts,
   });
 
-  ///* A factory constructor for creating a new [Authenticacts] instance
-  factory Authenticacts.fromJson(Map<String, dynamic> json) =>
+  ///* A factory constructor for creating a new [Authentication] instance
+  factory Authentication.fromJson(Map<String, dynamic> json) =>
       _$AuthenticactsFromJson(json);
 
-  ///* A factory constructor for creating a new [Authenticacts] instance
+  ///* A factory constructor for creating a new [Authentication] instance
   Map<String, dynamic> toJson() => _$AuthenticactsToJson(this);
 }

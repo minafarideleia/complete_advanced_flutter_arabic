@@ -47,15 +47,15 @@ Map<String, dynamic> _$ConstactsToJson(Constacts instance) => <String, dynamic>{
       'link': instance.link,
     };
 
-Authenticacts _$AuthenticactsFromJson(Map<String, dynamic> json) =>
-    Authenticacts(
+Authentication _$AuthenticactsFromJson(Map<String, dynamic> json) =>
+    Authentication(
       customer: Customer.fromJson(json['customer'] as Map<String, dynamic>),
       constacts: Constacts.fromJson(json['constacts'] as Map<String, dynamic>),
     )
       ..status = json['status'] as int? ?? 0
       ..message = json['message'] as String? ?? '';
 
-Map<String, dynamic> _$AuthenticactsToJson(Authenticacts instance) =>
+Map<String, dynamic> _$AuthenticactsToJson(Authentication instance) =>
     <String, dynamic>{
       'status': instance.status,
       'message': instance.message,
