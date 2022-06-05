@@ -7,5 +7,7 @@ class Constants {
   ///* add empty int constants to avoid null-checks
   static const int emptyInt = 0;
 
-  static const int timeOut = 60000; //  a min time out
+  static const int timeOut = 60000;
+
+  static const token = 'SEND TOKEN HERE';
 }

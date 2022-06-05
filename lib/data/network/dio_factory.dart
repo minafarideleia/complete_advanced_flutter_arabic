@@ -1,3 +1,4 @@
+import 'package:advanced_flutter_arabic/app/app_prefs.dart';
 import 'package:advanced_flutter_arabic/app/constants.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
@@ -7,17 +8,22 @@ const String applicationJson = 'application/json';
 const String contentType = 'content-type';
 const String accept = 'accept';
 const String authorization = 'authorization';
-const String defaultLanguage = 'langauge';
+const String defaultLanguage = 'language';
 
 class DioFactory {
+  final AppPreferences _appPreferences;
+
+  DioFactory(this._appPreferences);
   Dio getDio() {
     Dio dio = Dio();
+
+    String language = _appPreferences.getLanguage();
 
     Map<String, String> headers = {
       contentType: applicationJson,
       accept: applicationJson,
-      authorization: 'SEND TOKEN HERE',
-      defaultLanguage: 'en' // todo get lang from app prefs
+      authorization: Constants.token,
+      defaultLanguage: language,
     };
 
     dio.options = BaseOptions(
